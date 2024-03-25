@@ -1,0 +1,8 @@
+---
+- name: Perform ping check on hosts
+  hosts: all
+  become: yes  
+  gather_facts: false
+  tasks:
+    - name: Ping the hosts
+      ping:
