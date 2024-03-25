@@ -1,0 +1,21 @@
+---
+- name: Install Nginx on CentOS 7
+  hosts: your_server
+  become: yes  # ต้องเป็น root เพื่อทำการติดตั้ง
+
+  tasks:
+    - name: Install EPEL repository
+      yum:
+        name: epel-release
+        state: present
+
+    - name: Install Nginx
+      yum:
+        name: nginx
+        state: present
+
+    - name: Start Nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes  # ทำให้ Nginx เริ่มต้นขึ้นเมื่อเครื่องเปิดใช้งาน

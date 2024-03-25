@@ -1,0 +1,20 @@
+---
+- name: Install Nginx on Ubuntu 20
+  hosts: your_server
+  become: yes  # ต้องเป็น root เพื่อทำการติดตั้ง
+
+  tasks:
+    - name: Update apt package cache
+      apt:
+        update_cache: yes
+
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: present
+
+    - name: Start Nginx service
+      service:
+        name: nginx
+        state: started
+        enabled: yes  # ทำให้ Nginx เริ่มต้นขึ้นเมื่อเครื่องเปิดใช้งาน
